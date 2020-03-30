@@ -26,3 +26,8 @@ The **arduino** is directly connected to the internet and sends quests then proc
 ## How to use :
 ## Quick Start :
 ## Exemple :
+![up view of the system](upView.jpg)
+*When the system is connected, he display his ip.*
+
+![incredible cable management](cableManagement.jpg)
+*some incredibe cable management :joy:*
