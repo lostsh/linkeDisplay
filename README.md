@@ -15,7 +15,7 @@ Depending on the mode that you chose, you may display differents informations.
 
 The **arduino** is connected to the **PI** and display the infomation given by a script hosted on the Raspberry. The **PI** is tiny local web server, and request data from online APIs, sutch as meteo, coronavirus statistics, notification for new tweet, and more.
 
-![simple shema](shema.PNG)
+![simple shema](shema.png)
 
 *simplified operating diagram*
 
