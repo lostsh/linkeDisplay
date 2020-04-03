@@ -136,14 +136,7 @@ void displayData(String texte){
  */
 String extractData(String brutIncomingData){
   int size = brutIncomingData.length();
-  char text[size];
-  brutIncomingData.toCharArray(text, size);
-  int indexEndReqInfo = 0;/*
-  for(int i=0;i<=size;i++){
-    if(text[i]=='\n'){
-      indexEndReqInfo = i+1;
-    }
-  }*/
+  int indexEndReqInfo = 0;
   indexEndReqInfo = brutIncomingData.indexOf('\n',brutIncomingData.indexOf("Content-Type:"));
   //the +3 is for the tree '\n' before the data
   //if there is two '\n' ... why did i not use it ? because idk !
@@ -156,6 +149,9 @@ String extractData(String brutIncomingData){
 String extractDate(String brutIncomingData){
   int begDateIndex = brutIncomingData.indexOf("Date:",0)+6;
   int endDateIndex = brutIncomingData.indexOf('\n',begDateIndex);
-  String fullDate = brutIncomingData.substring(begDateIndex, endDateIndex); 
-  return fullDate;
+  String fullDate = brutIncomingData.substring(begDateIndex, endDateIndex);
+
+  String day = fullDate.substring(5,7);
+  String month = fullDate.substring(8,11);
+  return day+"/"+month;
 }
