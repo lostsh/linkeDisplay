@@ -23,7 +23,7 @@ const unsigned long postingInterval = 10L * 1000L;
 void setup() {
   lcd.begin(16,2);
   Serial.begin(9600);
-  delay(5000);
+  delay(2000);
   
   // check for the WiFi module:
   if (WiFi.status() == WL_NO_MODULE) {
@@ -68,12 +68,8 @@ void loop() {
 
 void httpRequest() {
   client.stop();
-  // if there's a successful connection:
   if (client.connect(server, 80)) {
     Serial.println("connecting...");
-    //lcd.clear();
-    //lcd.setCursor(0,0);
-    //lcd.print("connecting...");
     // send the HTTP PUT request:
     client.println("GET /me.txt HTTP/1.1");
     client.println("Host: ztHost.home");
@@ -125,10 +121,10 @@ void displayWifiStatus(){
 void displayData(String texte){
   lcd.clear();
   lcd.setCursor(0,0);
-  Serial.println("Date : \n---["+extractDate(texte)+"]---");
+  //Serial.println("Date : \n---["+extractDate(texte)+"]---");
   lcd.print(extractDate(texte));
   lcd.setCursor(0,1);
-  Serial.println("---["+extractData(texte)+"]---");
+  //Serial.println("---["+extractData(texte)+"]---");
   lcd.print(extractData(texte));
   delay(100);
 }
@@ -142,27 +138,24 @@ String extractData(String brutIncomingData){
   int size = brutIncomingData.length();
   char text[size];
   brutIncomingData.toCharArray(text, size);
-  int indexEndReqInfo = 0;
+  int indexEndReqInfo = 0;/*
   for(int i=0;i<=size;i++){
     if(text[i]=='\n'){
-      indexEndReqInfo = i;
+      indexEndReqInfo = i+1;
     }
-  }
-  return brutIncomingData.substring(indexEndReqInfo, size);
+  }*/
+  indexEndReqInfo = brutIncomingData.indexOf('\n',brutIncomingData.indexOf("Content-Type:"));
+  //the +3 is for the tree '\n' before the data
+  //if there is two '\n' ... why did i not use it ? because idk !
+  return brutIncomingData.substring(indexEndReqInfo+3, size-1);
 }
 
 /*
  * Get the actual date from the result of client.read()
-*/
+ */
 String extractDate(String brutIncomingData){
-  int begDateIndex = 0;
-  int i=0;
-  while(begDateIndex==0 && i<brutIncomingData.length()){
-    if(brutIncomingData.substring(i,i+5)=="Date:"){
-      begDateIndex = i+6;
-    }
-    i++;
-  }
+  int begDateIndex = brutIncomingData.indexOf("Date:",0)+6;
   int endDateIndex = brutIncomingData.indexOf('\n',begDateIndex);
-  return brutIncomingData.substring(begDateIndex, endDateIndex);
+  String fullDate = brutIncomingData.substring(begDateIndex, endDateIndex); 
+  return fullDate;
 }
