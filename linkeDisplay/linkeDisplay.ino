@@ -20,6 +20,9 @@ char server[] = "ztHost.home";
 unsigned long lastConnectionTime = 0;
 const unsigned long postingInterval = 10L * 1000L;
 
+//decalage entre le fuseau 00 et votre fuseau horraire
+const int GMT = 2;
+
 void setup() {
   lcd.begin(16,2);
   Serial.begin(9600);
@@ -52,7 +55,6 @@ void setup() {
 
 String text = "";
 void loop() {
-  
   while (client.available()) {
     char c = client.read();
     Serial.write(c);
@@ -153,5 +155,8 @@ String extractDate(String brutIncomingData){
 
   String day = fullDate.substring(5,7);
   String month = fullDate.substring(8,11);
-  return day+"/"+month;
+  String year = fullDate.substring(14,16);
+  String hour = String(fullDate.substring(17,19).toInt()+GMT);
+  String minut = fullDate.substring(20,22);
+  return day+"/"+month+"/"+year+"  "+hour+":"+minut;
 }
