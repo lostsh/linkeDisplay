@@ -23,6 +23,14 @@ The **arduino** is connected to the **PI** and display the infomation given by a
 The **arduino** is directly connected to the internet and sends quests then processes and displays data directly, which avoids using the **PI**.
 
 ## Installation :
+What you will need :
+- Arduino wifi
+- 220 Ohm resistor
+- Potentiometer 10K Ohm
+- LCD 16*2
+
+The scheme :
+![shema](circuit.png)
 ## How to use :
 ## Quick Start :
 ## Exemple :
