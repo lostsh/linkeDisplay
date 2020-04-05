@@ -32,15 +32,15 @@ What you will need :
 - LCD 16*2
 
 The scheme :
-![shema](circuit.png)
+![shema](img/circuit.png)
 
 ## Software part
 
 # Example
-![up view of the system](upView.jpg)
+![up view of the system](img/upView.jpg)
 *When the system is connected, he display his ip.*
 
-![incredible cable management](cableManagement.jpg)
+![incredible cable management](img/cableManagement.jpg)
 *some incredibe cable management :joy:*
 
 # Operation
@@ -49,18 +49,18 @@ The scheme :
 
 The **arduino** is connected to the **PI** and display the infomation given by a script hosted on the Raspberry. The **PI** is tiny local web server, and request data from online APIs, sutch as meteo, coronavirus statistics, notification for new tweet, and more.
 
-![simple shema](shema_0.png)
+![simple shema](img/shema_0.png)
 
 *simplified operating diagram*
 
 ## operating mode n°2 :
 The **arduino** is directly connected to the internet and sends quests then processes and displays data directly, which avoids using the **PI**.
 
-![simple shema](shema_1.png)
+![simple shema](img/shema_1.png)
 
 ## summary
 
 |  Operating mode n°1 | Operating mode n°2  | Operating mode n°3 |
 |---------------------|---------------------|--------------------|
 | **Arduino** and **pi**|**Arduino** and **github repo**|**Arduino** only|
-|![simple shema](shema_0.png)|![simple shema](shema_1.png)||
+|![simple shema](img/shema_0.png)|![simple shema](img/shema_1.png)||
