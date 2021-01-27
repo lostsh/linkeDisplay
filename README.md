@@ -36,6 +36,8 @@ The scheme :
 
 ## Software part
 
+API : https://www.who.int/data/gho/info/athena-api
+
 # Example
 ![up view of the system](img/upView.jpg)
 *When the system is connected, he display his ip.*
